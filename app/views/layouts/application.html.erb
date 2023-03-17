@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= 
+      javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key+'&callback=initMap',
+      defer: true
+    %>
+    <%= javascript_include_tag 'map' %>
+    <%= stylesheet_link_tag "map"%>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= yield %>
+    <%= yield (:head_tags) %>
   </body>
 </html>
